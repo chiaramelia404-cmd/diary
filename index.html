@@ -63,22 +63,28 @@ body{background:var(--cream);overflow-x:hidden;font-family:'Nunito',sans-serif;c
 
 .s2{background:white;min-height:100vh;border-bottom:3px solid var(--ink);}
 .s2 .section-tag{color:var(--sky);}
-.string-gallery{position:relative;width:100%;min-height:380px;margin:40px 0 60px;}
+.string-gallery{position:relative;width:100%;min-height:430px;margin:40px 0 60px;}
 .gallery-string{position:absolute;top:24px;left:-40px;right:-40px;height:3px;background:linear-gradient(to right,transparent 0%,var(--ink) 5%,var(--ink) 95%,transparent 100%);}
-.polaroid{position:absolute;top:24px;width:155px;background:white;padding:10px 10px 36px;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);cursor:pointer;transform-origin:top center;transition:box-shadow .25s ease;}
+.polaroid{position:absolute;top:24px;width:170px;background:white;padding:10px 10px 56px;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);cursor:pointer;transform-origin:top center;transition:box-shadow .25s ease;}
 .polaroid:hover{z-index:20;box-shadow:8px 10px 0 var(--ink);}
 .polaroid-clip{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:16px;height:28px;background:#ccc;border:1.5px solid var(--ink);border-radius:3px 3px 2px 2px;z-index:5;}
-.photo-sim{width:135px;height:135px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;border-radius:2px;}
-.polaroid-caption{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:'Space Mono',monospace;color:var(--ink);font-size:.72rem;line-height:1.3;padding:0 8px;font-weight:700;}
+.polaroid-img{width:150px;height:150px;object-fit:cover;display:block;border:1.5px solid rgba(26,26,46,.12);}
+.photo-sim{width:150px;height:150px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:#f5f5f5;border:1.5px solid rgba(26,26,46,.08);}
+.polaroid-meta{position:absolute;bottom:0;left:0;right:0;padding:6px 10px 8px;display:flex;flex-direction:column;gap:2px;}
+.polaroid-date-loc{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;color:#aaa;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.polaroid-caption{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--ink);line-height:1.3;}
 .polaroid-memory{display:none;position:fixed;inset:0;background:rgba(26,26,46,.75);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
 .polaroid-memory.open{display:flex;}
-.memory-card{background:white;padding:32px 36px 40px;max-width:460px;width:90%;position:relative;border:3px solid var(--ink);border-radius:16px;box-shadow:8px 8px 0 var(--ink);animation:memPop .35s cubic-bezier(.34,1.56,.64,1) forwards;}
+.memory-card{background:white;padding:0;max-width:460px;width:90%;position:relative;border:3px solid var(--ink);border-radius:16px;box-shadow:8px 8px 0 var(--ink);animation:memPop .35s cubic-bezier(.34,1.56,.64,1) forwards;overflow:hidden;}
 @keyframes memPop{from{opacity:0;transform:scale(.75) rotate(-3deg);}to{opacity:1;transform:scale(1) rotate(0deg);}}
-.memory-card h3{font-family:'Fraunces',serif;color:var(--ink);font-size:1.5rem;font-weight:900;margin-bottom:12px;}
-.memory-card p{font-size:.95rem;color:var(--muted);line-height:1.85;font-weight:600;}
-.memory-close{position:absolute;top:12px;right:16px;font-size:1.5rem;cursor:pointer;color:var(--muted);transition:color .2s,transform .2s;font-weight:700;line-height:1;}
-.memory-close:hover{color:var(--coral);transform:rotate(90deg);}
-.memory-photo-top{width:100%;height:110px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:16px;border-radius:10px;border:2px solid var(--ink);}
+.memory-photo-top{width:100%;height:200px;object-fit:cover;display:block;}
+.memory-photo-placeholder{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.memory-card-body{padding:22px 28px 28px;}
+.memory-card-badge{display:inline-flex;align-items:center;gap:6px;background:var(--sun);border:2px solid var(--ink);border-radius:50px;padding:3px 12px;font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;color:var(--ink);margin-bottom:12px;}
+.memory-card h3{font-family:'Fraunces',serif;color:var(--ink);font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.memory-card p{font-size:.92rem;color:var(--muted);line-height:1.85;font-weight:600;}
+.memory-close{position:absolute;top:10px;right:12px;font-size:1.3rem;cursor:pointer;color:white;transition:transform .2s;font-weight:700;line-height:1;background:var(--ink);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:10;}
+.memory-close:hover{transform:rotate(90deg);}
 
 .s3{background:#F0FFF4;min-height:100vh;border-bottom:3px solid var(--ink);}
 .s3 .section-tag{color:var(--mint);}
@@ -200,7 +206,7 @@ body{background:var(--cream);overflow-x:hidden;font-family:'Nunito',sans-serif;c
 
 <div class="confetti-bar" id="confettiBar"><svg id="lightsSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
 <button class="music-toggle" id="musicBtn"><span class="music-note">♪</span><span id="musicLabel">Play our song</span></button>
-<audio id="bgMusic" loop> <source src="song.mp3" type="audio/mpeg"> </audio>
+<audio id="bgMusic" loop><!-- <source src="your-song.mp3" type="audio/mpeg"> --></audio>
 <nav class="nav-dots" id="navDots">
   <div class="nav-dot active" data-section="0"></div>
   <div class="nav-dot" data-section="1"></div>
@@ -214,9 +220,12 @@ body{background:var(--cream);overflow-x:hidden;font-family:'Nunito',sans-serif;c
 <div class="polaroid-memory" id="memoryModal">
   <div class="memory-card">
     <span class="memory-close" id="memoryClose">✕</span>
-    <div class="memory-photo-top" id="memoryEmoji"></div>
-    <h3 id="memoryTitle"></h3>
-    <p id="memoryText"></p>
+    <div id="memoryPhotoWrap"></div>
+    <div class="memory-card-body">
+      <div class="memory-card-badge" id="memoryBadge"></div>
+      <h3 id="memoryTitle"></h3>
+      <p id="memoryText"></p>
+    </div>
   </div>
 </div>
 
@@ -335,12 +344,48 @@ body{background:var(--cream);overflow-x:hidden;font-family:'Nunito',sans-serif;c
 const SECRET_PASSWORD='sunshine';
 const TYPEWRITER_TEXT=`Okay so it didn't really start with anything dramatic. No slow-motion eye contact across a crowded room. No cinematic music. Just two people being normal, and then suddenly — you were just kind of everywhere.\n\nAnd I didn't mind. That was the surprising part. Normally I would mind.\n\nI don't know the exact moment things shifted. But at some point I realised I was looking forward to talking to you. Like, genuinely looking forward to it. Which was new.\n\nSo yeah. That's how it started. Quietly, and then a lot.`;
 const POLAROIDS=[
-  {emoji:'🌙',bg:'#E6FFFE',caption:'that late night lol',title:'When We Stayed Up Way Too Late',text:"Neither of us should have been awake. We both had things to do the next day. We did not care at all. We talked about everything and nothing and it was genuinely one of the best nights."},
-  {emoji:'☕',bg:'#FFF9E6',caption:'the café thing',title:'That Café We Keep Talking About',text:"The coffee was fine. The conversation was better. You kept doing that thing where you get excited about something mid-sentence and completely lose the thread. I could watch you do that forever."},
-  {emoji:'🌸',bg:'#FFF0F8',caption:'spring walk!!',title:"The Walk We Didn't Plan",text:"We had no destination and somehow ended up somewhere really nice. You picked up a fallen blossom off the ground and it was objectively very cute and I am not going to tell you that in person."},
-  {emoji:'🎬',bg:'#F0FFF4',caption:'movie night (kinda)',title:'We Did Not Watch the Film',text:"We started a film. We did not finish it. We were too busy talking. The credits rolled at some point. I honestly don't remember what it was about. 10/10 evening."},
-  {emoji:'🌅',bg:'#FFF9E6',caption:'5am supremacy',title:'Sunrise > Sleep',text:"Staying up until 5am seemed like a terrible idea going in. Watching the sun come up with you made it feel like the best decision we'd ever made. Tired but worth it."},
-  {emoji:'💌',bg:'#F3EEFF',caption:'the note 🫣',title:'That Little Note You Wrote',text:"Just a few words on a piece of paper. You probably don't even remember writing it. I kept it. I'm not going to say more than that."},
+  {
+    src:'photos/late-night.jpg', emoji:'🌙', bg:'#E6FFFE',
+    date:'Nov 2023', location:'Your City',
+    caption:'that late night lol',
+    title:'When We Stayed Up Way Too Late',
+    text:"Neither of us should have been awake. We both had things to do the next day. We did not care at all. We talked about everything and nothing and it was genuinely one of the best nights."
+  },
+  {
+    src:'photos/cafe.jpg', emoji:'☕', bg:'#FFF9E6',
+    date:'Dec 2023', location:'That Little Café',
+    caption:'the café thing',
+    title:'That Café We Keep Talking About',
+    text:"The coffee was fine. The conversation was better. You kept doing that thing where you get excited about something mid-sentence and completely lose the thread. I could watch you do that forever."
+  },
+  {
+    src:'photos/spring-walk.jpg', emoji:'🌸', bg:'#FFF0F8',
+    date:'Mar 2024', location:'Somewhere Nice',
+    caption:'spring walk!!',
+    title:"The Walk We Didn't Plan",
+    text:"We had no destination and somehow ended up somewhere really nice. You picked up a fallen blossom off the ground and it was objectively very cute and I am not going to tell you that in person."
+  },
+  {
+    src:'photos/movie-night.jpg', emoji:'🎬', bg:'#F0FFF4',
+    date:'Jan 2024', location:'Your Place',
+    caption:'movie night (kinda)',
+    title:'We Did Not Watch the Film',
+    text:"We started a film. We did not finish it. We were too busy talking. The credits rolled at some point. I honestly don't remember what it was about. 10/10 evening."
+  },
+  {
+    src:'photos/sunrise.jpg', emoji:'🌅', bg:'#FFF9E6',
+    date:'Feb 2024', location:'Rooftop',
+    caption:'5am supremacy',
+    title:'Sunrise > Sleep',
+    text:"Staying up until 5am seemed like a terrible idea going in. Watching the sun come up with you made it feel like the best decision we'd ever made. Tired but worth it."
+  },
+  {
+    src:'photos/the-note.jpg', emoji:'💌', bg:'#F3EEFF',
+    date:'Oct 2023', location:'Our Spot',
+    caption:'the note 🫣',
+    title:'That Little Note You Wrote',
+    text:"Just a few words on a piece of paper. You probably don't even remember writing it. I kept it. I'm not going to say more than that."
+  },
 ];
 const LOVE_CARDS=[
   {title:'Your laugh is actually unhinged',text:"It starts before you think anything is funny. Like your face just decides it's funny first. And then you lose it completely over something genuinely minor. It's one of my favourite things in the world."},
@@ -400,10 +445,26 @@ function buildPolaroids(){
   const gallery=document.getElementById('stringGallery'),total=POLAROIDS.length,spacing=100/(total+1);
   POLAROIDS.forEach((mem,i)=>{
     const angle=POLAROID_ANGLES[i]||0,leftPct=spacing*(i+1);
-    const p=document.createElement('div');p.className='polaroid';p.style.cssText=`left:calc(${leftPct}% - 77px);transform:rotate(${angle}deg);`;
+    const p=document.createElement('div');p.className='polaroid';p.style.cssText=`left:calc(${leftPct}% - 85px);transform:rotate(${angle}deg);`;
+    // clip
     const clip=document.createElement('div');clip.className='polaroid-clip';p.appendChild(clip);
-    const photo=document.createElement('div');photo.className='photo-sim';photo.style.background=mem.bg;photo.innerHTML=`<span>${mem.emoji}</span>`;p.appendChild(photo);
-    const cap=document.createElement('div');cap.className='polaroid-caption';cap.textContent=mem.caption;p.appendChild(cap);
+    // photo or placeholder
+    if(mem.src){
+      const img=document.createElement('img');img.className='polaroid-img';img.src=mem.src;img.alt=mem.caption;
+      img.onerror=function(){this.style.display='none';const ph=document.createElement('div');ph.className='photo-sim';ph.style.background=mem.bg;ph.innerHTML=`<span>${mem.emoji}</span>`;p.insertBefore(ph,this.nextSibling);};
+      p.appendChild(img);
+    } else {
+      const ph=document.createElement('div');ph.className='photo-sim';ph.style.background=mem.bg;ph.innerHTML=`<span>${mem.emoji}</span>`;p.appendChild(ph);
+    }
+    // meta: date+location + caption
+    const meta=document.createElement('div');meta.className='polaroid-meta';
+    if(mem.date||mem.location){
+      const dl=document.createElement('div');dl.className='polaroid-date-loc';
+      dl.textContent=[mem.date,mem.location].filter(Boolean).join(' · ');
+      meta.appendChild(dl);
+    }
+    const cap=document.createElement('div');cap.className='polaroid-caption';cap.textContent=mem.caption;meta.appendChild(cap);
+    p.appendChild(meta);
     p.addEventListener('click',()=>openMemory(mem));
     p.addEventListener('mouseenter',()=>{p.style.transform=`rotate(${angle*.4}deg) scale(1.08)`;});
     p.addEventListener('mouseleave',()=>{p.style.transform=`rotate(${angle}deg) scale(1)`;});
@@ -411,8 +472,19 @@ function buildPolaroids(){
   });
 }
 function openMemory(mem){
-  document.getElementById('memoryEmoji').textContent=mem.emoji;document.getElementById('memoryEmoji').style.background=mem.bg;
-  document.getElementById('memoryTitle').textContent=mem.title;document.getElementById('memoryText').textContent=mem.text;
+  const wrap=document.getElementById('memoryPhotoWrap');
+  wrap.innerHTML='';
+  if(mem.src){
+    const img=document.createElement('img');img.className='memory-photo-top';img.src=mem.src;img.alt=mem.caption;
+    img.onerror=function(){this.style.display='none';const ph=document.createElement('div');ph.className='memory-photo-placeholder';ph.style.background=mem.bg;ph.textContent=mem.emoji;wrap.appendChild(ph);};
+    wrap.appendChild(img);
+  } else {
+    const ph=document.createElement('div');ph.className='memory-photo-placeholder';ph.style.background=mem.bg;ph.textContent=mem.emoji;wrap.appendChild(ph);
+  }
+  const badge=document.getElementById('memoryBadge');
+  badge.textContent=[mem.date,mem.location].filter(Boolean).join(' · ') || mem.caption;
+  document.getElementById('memoryTitle').textContent=mem.title;
+  document.getElementById('memoryText').textContent=mem.text;
   document.getElementById('memoryModal').classList.add('open');
 }
 document.getElementById('memoryClose').addEventListener('click',()=>document.getElementById('memoryModal').classList.remove('open'));
