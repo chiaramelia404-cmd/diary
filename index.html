@@ -206,7 +206,7 @@ body{background:var(--cream);overflow-x:hidden;font-family:'Nunito',sans-serif;c
 
 <div class="confetti-bar" id="confettiBar"><svg id="lightsSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
 <button class="music-toggle" id="musicBtn"><span class="music-note">♪</span><span id="musicLabel">Play our song</span></button>
-<audio id="bgMusic" loop><!-- <source src="your-song.mp3" type="audio/mpeg"> --></audio>
+<audio id="bgMusic" loop> <source src="song.mp3" type="audio/mpeg"> </audio>
 <nav class="nav-dots" id="navDots">
   <div class="nav-dot active" data-section="0"></div>
   <div class="nav-dot" data-section="1"></div>
@@ -530,7 +530,7 @@ document.getElementById('envelope').addEventListener('click',()=>{if(envOpen)ret
 let playing=false;
 document.getElementById('musicBtn').addEventListener('click',()=>{
   const audio=document.getElementById('bgMusic'),musicLabel=document.getElementById('musicLabel'),musicBtn=document.getElementById('musicBtn');
-  if(!audio.src&&audio.querySelectorAll('source').length===0){showToast('🎵 Add your song! Put a source tag inside #bgMusic.');return;}
+  return;}
   if(playing){audio.pause();playing=false;musicLabel.textContent='Play our song';musicBtn.classList.remove('playing');}
   else{audio.play().catch(()=>showToast('Tap again 🎵'));playing=true;musicLabel.textContent='Pause';musicBtn.classList.add('playing');}
 });
